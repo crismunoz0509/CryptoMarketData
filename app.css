@@ -1,0 +1,51 @@
+body{
+    background-color: black;
+    margin: 0;
+    color: white;
+    font-family: rubik;
+}
+
+h1 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 54;
+}
+
+#rates {
+    padding-inline-start: 0;
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(150px, 4fr));
+    grid-gap: 10px;
+}
+
+.container{
+    padding: 20px;
+}
+
+.card{
+    list-style: none;
+    background-color: #262626;
+    padding: 25px;
+    text-align: left;
+}
+
+.card-img{
+    display: inline;
+}
+
+.card-id{
+    display: inline;
+    margin-left: 80px;
+}
+
+.card-name{
+    display: inline;
+    align-content: center;
+    margin-left: 80px;
+}
+
+.card-price{
+    display: inline;
+    text-align: center;
+    margin-left: 80px;
+}
