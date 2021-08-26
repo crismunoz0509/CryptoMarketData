@@ -12,40 +12,48 @@ h1 {
 }
 
 #rates {
-    padding-inline-start: 0;
     display: grid;
-    grid-template-rows: repeat(auto-fit, minmax(150px, 4fr));
-    grid-gap: 10px;
+    padding-inline-start: 0;
+    grid-gap: 20px;
 }
 
-.container{
-    padding: 20px;
+.background{
+    padding:20px;
+}
+
+.list > li:nth-child(even){
+    background:#505050;
 }
 
 .card{
+    display:grid;
+    grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 1fr);
     list-style: none;
     background-color: #262626;
-    padding: 25px;
-    text-align: left;
+    padding: 10px;
+    justify-content: space-around;
+    align-items: center;
+    column-gap: 50px;
 }
 
 .card-img{
-    display: inline;
-}
-
-.card-id{
-    display: inline;
-    margin-left: 80px;
-}
-
-.card-name{
-    display: inline;
-    align-content: center;
-    margin-left: 80px;
-}
-
-.card-price{
-    display: inline;
     text-align: center;
-    margin-left: 80px;
+    padding: 5px;
+    width: 50px;
+    height: 50px
+}
+
+.card-identifier{
+    display:grid;
+    grid-template-columns: minmax(min-content, 1em) minmax(min-content, 1em) minmax(min-content, 1em);
+    align-items: center;
+    column-gap: 50px;
+}
+
+.card-pricedata{
+    margin-right: 5px;
+    display:grid;
+    grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 1fr);
+    align-items: right;
+    column-gap: 1em;
 }
