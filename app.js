@@ -2,6 +2,8 @@ const rates = document.getElementById("rates");
 const key = '68729acf9d43e1af7e81f024ae29a72163fd6a09';
 const coins = ['BTC', 'ETH', 'ADA', 'BNB', 'USDT'];
 const promises = [];
+let list = [];
+let namesCache = [];
 
 const FetchRates = () => {
 
@@ -39,33 +41,38 @@ const DisplayRates = (cryptoArray) => {
     ).join(' ');
     rates.innerHTML = cryptoInfoHTML;
 };
+async function pushNames() {
 
-const delay = (seconds = 1000) => new Promise(res => setTimeout(res, seconds));
-let list = [];
-let names = [];
-const pushNames = async  res => {
-    for (let index = 1; index <= 2; index++) {
+    const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
-        await delay();
-
+    for (let index = 1; index <= 8; index++) {
+        await delay(1100);
         const res = await fetch(`https://api.nomics.com/v1/currencies/ticker?key=${key}&per-page=100&page=${index}`).then(data => data.json());
         list.push(res);
-    }
-    console.log("push names");
+    }  
+
+    list.map((data) => {   
+        data.map( (info) => {
+            namesCache.push(info.id);
+        });
+    });
+
+    const buttonSpot = document.getElementById("button-spot");
+    buttonSpot.innerHTML = `
+        <button class="add-button" type="button" value="ADD COIN" onclick="addCoin()"><b>ADD COIN</b></button>
+        <input class="input-box" type="text" id="inputText" placeholder="enter crypto abbrevation">
+    `
+
+    console.log("pushnames complete");
 };
 
+
 var checker = (name) => {
-    pushNames();
-    //for(let i = 0; i <= 1; i++){
-        list[0].map( data => names.push(data.id));
-    //}
-    for(let i = 0; i <= names.length - 1; i++){
-        console.log(name.localeCompare(names[i].toString()));
-        if(name.localeCompare(names[i].toString()) == 0){
+    for(let i = 0; i < namesCache.length; i++){
+        if(name == namesCache[i]){
             return true;
         }
     }
-    console.log("done");
     return false;
 };
 
@@ -76,9 +83,15 @@ const addCoin = () => {
     }else{
         console.log(inputValue);
         if(checker(inputValue)){
+            coins.push(inputValue);
+            FetchRates();
             console.log("GOOD NAME");
         }else{
+
             console.log("invalid name");
         }
     }
 };
+
+pushNames();
+FetchRates();

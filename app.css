@@ -57,3 +57,33 @@ h1 {
     align-items: right;
     column-gap: 1em;
 }
+
+.input-box{
+    background-color: #262626;
+    height: 90px;
+    font-size: 30px;
+    border: 0;
+    text-align: center;
+    color: lightgray;
+}
+
+.add-button{
+    background-color: #262626;
+    border: 0;
+    font-size: 30px;
+    text-align: center;
+    color: lightgray;
+}
+
+.add-button:hover{
+    cursor:pointer;
+}
+
+.add-button:active{
+    background-color: #202020;
+}
+
+#button-spot{
+    display: grid;
+    grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 1fr);
+}
